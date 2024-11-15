@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 temp_dir=os.path.join(BASE_DIR,'templates')
+if 'PORT' in os.environ:
+    PORT = os.environ.get('PORT')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-1ppajt+lgivq*-9_2ulj8^jlg)@d23&2f6h=p#(_p!6@(%z2m-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://agri-product-reviews.onrender.com']
 
 
 # Application definition
