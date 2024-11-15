@@ -1,0 +1,30 @@
+{% extends 'products/base.html' %}
+
+{% block title %}My Reviews - {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>My Reviews</h1>
+
+{% if reviews %}
+    {% for review in reviews %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'product_detail' review.product.pk %}">
+                        {{ review.product.name }}
+                    </a>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Rating: {{ review.rating }}/5</h6>
+                <p class="card-text">{{ review.comment }}</p>
+                <div class="text-muted mb-2">Posted on {{ review.created_at|date }}</div>
+                <div class="btn-group">
+                    <a href="{% url 'edit_review' review.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'delete_review' review.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>You haven't written any reviews yet.</p>
+{% endif %}
+{% endblock %}

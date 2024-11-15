@@ -1,0 +1,14 @@
+{% extends 'products/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Add Review - {{ product.name }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>Write a Review for {{ product.name }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+{% endblock %}
